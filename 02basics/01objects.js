@@ -67,7 +67,7 @@ Jsuser.greeting = function(){
 console.log(Jsuser.greeting()) ;
 
 Jsuser.greeting2 = function(){
-    console.log(`hellow mr, ${this.name}`) // `` used for string interplotion
+    console.log(`hello mr.${this.name}`) // `` used for string interplotion
 }
 
 console.log(Jsuser.greeting2())
