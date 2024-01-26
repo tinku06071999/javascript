@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>chai or code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <ul class="language">
+      <li>Javascript</li>
+    </ul>
+  </body>
+  <script>
+    // designing a function to create element like li ul etc.
+    //basically we creating the the language elemnets like we have li lement which has the rext javascript and 
+    // now we create a function to add more such type of li elment of laguage
+    // to create this function we have to give the parameters like language etc.
+
+   function addLanguage (langName){
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`
+        
+        // now attaching the li element to ul
+        // const parent = document.querySelector('.language');
+        // parent.appendChild(li);
+
+        //another method of attaching to parent 
+
+        document.querySelector('.language').appendChild(li)
+        
+    };
+    addLanguage("python") //calling the function to add an li elment with text python 
+    addLanguage("React.js")
+
+    // the approach to add an element is not optimised like when we adding an elment then it first traverse the tree till the end node and then add it will take lot of time or there may 
+    // be some optimization issues in large scale projects. 
+    // let's now discuss an optimize approach to above things
+    function addOptiLanguage(langname){
+        const li = document.createElement('li');
+        const addtext  = document.createTextNode(`${langname}`);
+        li.appendChild(addtext);
+        // adding li to ul
+        document.querySelector('.language').appendChild(li);
+    }
+    addOptiLanguage("Node.js")
+
+    // now edititng these values
+
+    // lets edit second language
+
+    const secondLang = document.querySelector("li:nth-child(2)");
+    
+    // first and brute forece method to edit the text is innerHTML
+    // secondLang.innerHTML = "Java";
+
+    // optimise method to update it
+
+    // const addText = document.createTextNode("java");
+    // secondLang.appendChild(addText); // it will ad java with its child like we have second elment is python so after this it show like this pythonjava
+    // so replcae it we can use below method
+    // secondLang.replaceWith(addText)
+
+    // one more method to edit 
+   // create new element and replace the old element  with new element
+//   const newli = document.createElement('li') // creating new li elment 
+//   newli.textContent = "java" // giving text two the li element
+//   secondLang.replaceWith(newli); // now replace this with the second element
+ 
+// another method to edit
+ // lets edit the first elment
+
+//  const firstLang = document.querySelector("li:nth-child(1)");
+ const firstLang = document.querySelector("li:first-child");
+
+//  const newli = document.createElement('li');
+//  newli.textContent = "golang";
+//  firstLang.replaceWith(newli);
+firstLang.outerHTML = '<li>golang</li>'
+
+
+// removing an elment
+
+const lastlang = document.querySelector('li:last-child');
+lastlang.remove()
+
+ </script>
+</html>

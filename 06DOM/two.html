@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lan="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>DOM | Chai or Code</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <div class="parent">
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+    </div>
+  </body>
+  <script>
+    const parent = document.querySelector(".parent");
+    // console.log(parent);
+    // console.log(parent.children); // give html collection almost array like
+    // console.log(parent.children[1]); // accesing the first element of the html collection
+    // console.log(parent.children[1].innerHTML); // Tuesday
+    // manuplating the html collection we get (note we cant apply forEach loop on html collection but we can use noraml for loop)
+    // for (let i = 0; i < parent.children.length; i++) {
+    //   console.log(parent.children[i].innerHTML);
+    // }
+    
+
+    // moving parent to chind using firstElementChild and lastElementChild etc.
+
+    // console.log(parent.firstElementChild);
+    // console.log(parent.lastElementChild);
+
+    //moving children to parent
+
+    // const dayOne = document.querySelector('.day');
+    // console.log(dayOne); // return   day 1
+    // console.log(dayOne.parentElement); // return the parent elemnt of the dayOne
+    // console.log(dayOne.nextElementSibling); // return the next sibling of the dayPne which is tuesday
+    
+
+    // finding total nodes in dom tree
+    console.log("Node: ",parent.childNodes) // Node list of all the node here it wiil return total 9 nodes
+
+    
+
+  </script>
+</html>

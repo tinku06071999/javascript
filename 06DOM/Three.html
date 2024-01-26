@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chai aur code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body style="background-color: #212121; color: #fff"></body>
+  <script>
+    // creating element in document
+
+    // creating div
+    const div = document.createElement("div");
+    console.log(div);
+    //adding properties in div
+    div.className = "main";
+    div.id = Math.round(Math.random() * 10 + 1); //adding a random value to id of div or giving the id name like id ="heaidng" in this we give a random value instead of heading
+
+    // seeting custom attributes
+
+    div.setAttribute("title", "this is the value for title");
+
+    // styling
+
+    div.style.backgroundColor = "green"
+    div.style.padding = "12px"
+
+    // div.innerText = "chai or code"; // this operation is costly like it will take the text than overrite so it is two round trip
+
+   const addtext =  document.createTextNode("chai or code"); // this is the alternate of innerText and better than innerText method only one round trip
+    // now attach this text
+    div.appendChild(addtext)
+
+    // the above all operations only showing in console but not showing in the page
+    // bassically currently the div create is in the memory to show it on the page we have to attach with the documnet
+  
+    // attachin the it document
+    document.body.appendChild(div); // appent the div elment to main page
+  </script>
+</html>

@@ -73,7 +73,7 @@ here comes the conpcept of the truthy value and falsy value
 
 // terniary operator
 
-// consdition ? true : fakse
+// consdition ? true : false
 
 // const iceTeaPrice = 100;
 // iceTeaPrice <=80 ? console.log("less than 80") : console.log("more than 80")
