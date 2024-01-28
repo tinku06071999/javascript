@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Dcoment</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <h1>Chai or code</h1>
+    <button id="stop"> Stop</button>
+  </body>
+  <script>
+    // setTimeout(function(){
+    //     console.log("Tinku verma")
+    // },2000)
+    // setInterval(function(){
+    //     console.log("TInku verma")
+    // },1000)
+
+    // passing function 
+
+    // const sayTinku = function(){
+    //     console.log("Tinku");
+
+    // }
+    // setTimeout(sayTinku, 2000);
+  
+    // now we want to change the text after 2 or 1 second 
+
+    // const changeName = function(){
+    //     document.querySelector('h1').innerHTML = "Learnig best from the best"
+    // }
+    // setTimeout(changeName,2000);
+
+
+    // now lets create a fucntionilaity to blink the heading 
+//     const changeName1 = function(){
+//         console.log("heading 1")
+//         document.querySelector('h1').innerHTML = "Heading 1"
+//     }
+//    const changeName2 = function(){
+//     console.log("heading 2")
+//     document.querySelector('h1').innerHTML = "Heading 2"
+//    }
+//    setInterval(changeName1,1000);
+//    setInterval(changeName2,2000);
+
+
+// important these type of concept is used in pop message like webiste showing adds (course add etc)
+  // now we have function to stop the timeout
+  // for it we use clearTimeout() . it takes referncf to ahich tomepur it have to stop
+
+  // now let add this to when click on stop button we have in this html page
+
+  const changeName = function(){
+        document.querySelector('h1').innerHTML = "Learnig best from the best";
+    }
+const changingName = setTimeout(changeName,2000);
+
+  document.querySelector('#stop').addEventListener('click',function(){
+    clearTimeout(changingName);
+    console.log("STOPPED")
+  })
+
+
+  </script>
+</html>

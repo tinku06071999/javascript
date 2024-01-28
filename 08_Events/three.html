@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Dcoment</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <h1>Chai or javscript</h1>
+    <button id="stop">Stop</button>
+    <button id="start">Start</button>
+  </body>
+  <script>
+    // setInterval with functions
+
+    const sayDate = function(str){
+        console.log(str, Date.now());
+    }
+    // setInterval(sayDate,1000,"hi, Date is : ")
+
+    // method to stop interval
+   
+    // clearInterval() // parameter is referce of setInterval ()
+//  const stopInterval = setInterval(sayDate, 1000, "hi mr Tinku");
+//  clearInterval(stopInterval);
+// now lets  make a fucntion for it and add it stop button to step the setInterval
+
+let intervalId ;
+
+function startInterval(){
+    console.log("started")
+    intervalId = setInterval(sayDate,1000,"hi ")
+}
+function stopInterval(){
+    clearInterval(intervalId);
+    console.log("Stopped")
+}
+
+document.querySelector('#stop').addEventListener('click',stopInterval)
+
+// now active start button to start again
+
+document.querySelector('#start').addEventListener('click',startInterval)
+
+
+  </script>
+</html>

@@ -237,3 +237,111 @@ function newGame() {
   });
 }
 ```
+
+## project 05 (project on events)(color changer)
+
+```javascript
+// let intervalId;
+//     const colorArray = ['green','red','white','blue','orange','pink','purple'];
+// //     const colorArray = ['green', 'red', 'white', 'blue', 'orange', 'pink', 'purple',
+// //     'yellow', 'brown', 'black', 'cyan', 'magenta', 'violet', 'teal',
+// //     'maroon', 'navy', 'olive', 'skyblue', 'lime', 'turquoise', 'indigo',
+// //     'coral', 'gold', 'silver', 'orchid', 'salmon', 'tan', 'ivory',
+// //     'lavender', 'peru', 'plum', 'thistle', 'wheat', 'crimson', 'sienna',
+// //     'moccasin', 'cornflowerblue', 'darkorange', 'darkseagreen', 'forestgreen',
+// //     'indianred', 'lightcoral', 'lightpink', 'lightsalmon', 'mediumorchid',
+// //     'mediumvioletred', 'olivedrab', 'palevioletred', 'rosybrown', 'sandybrown',
+// //     'aliceblue', 'antiquewhite', 'aquamarine', 'azure', 'beige', 'bisque', 'blanchedalmond',
+// //     'burlywood', 'cadetblue', 'chartreuse', 'chocolate', 'cornsilk', 'crimson', 'darkcyan',
+// //     'darkgoldenrod', 'darkgray', 'darkkhaki', 'darkmagenta', 'darkolivegreen', 'darkorchid',
+// //     'darkred', 'darksalmon', 'darkslateblue', 'darkslategray', 'darkturquoise', 'darkviolet',
+// //     'deeppink', 'deepskyblue', 'dimgray', 'dodgerblue', 'firebrick', 'floralwhite', 'fuchsia',
+// //     'gainsboro', 'ghostwhite', 'goldenrod', 'greenyellow', 'honeydew', 'hotpink', 'indianred'
+// //    ]
+
+const body = document.querySelector("body");
+const startbutton = document.querySelector("#start");
+const stopbutton = document.querySelector("#stop");
+//     let index = 0;
+
+//    function startChange(colorArray){
+//         console.log("startted");
+//         body.style.backgroundColor = colorArray[index];
+//         index++;
+//         if(index >= colorArray.length){
+//             index = 0;
+//         }
+
+//     }
+
+//     function startInterval(){
+//         console.log("startedd");
+//         intervalId = setInterval(startChange,0,colorArray);
+//     }
+//     function stopInterval(){
+//         console.log("Stopped");
+//         clearInterval(intervalId);
+//         intervalId =null;
+//     }
+
+//     startbutton.addEventListener('click',startInterval);
+//     stopbutton.addEventListener('click',stopInterval);
+
+// now lets take an array of hex code of color and randmly genarete function
+let intervalId;
+
+const randomColor = function () {
+  const hex = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += hex[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+// console.log(randomColor())
+function startChange() {
+  body.style.backgroundColor = randomColor();
+}
+
+function startInterval() {
+  console.log("startedd");
+  if (!intervalId) {
+    intervalId = setInterval(startChange, 0, randomColor);
+  }
+}
+function stopInterval() {
+  console.log("Stopped");
+  clearInterval(intervalId);
+  intervalId = null;
+}
+startbutton.addEventListener("click", startInterval);
+stopbutton.addEventListener("click", stopInterval);
+```
+
+## project 06 (project on event)(keyboard cheker)
+
+```javascript
+const insert = document.querySelector("#insert");
+console.log(insert);
+window.addEventListener("keydown", (e) => {
+  insert.innerHTML = `
+    <div class = 'color' style = "border:0.2px solid red; color:green; max-width:auto">
+        <table >
+            <tr >
+                <th style = "border:0.2px solid red">key</th>
+                <th style = "border:0.2px solid red">keyCode</th>
+                <th style = "border:0.2px solid red">code</th>
+            </tr>
+            <tr >
+                <td style = "border:0.2px solid red">${
+                  e.key === " " ? "Space" : e.key
+                }</td>
+                <td style = "border:0.2px solid red">${e.keyCode}</td>
+                <td style = "border:0.2px solid red">${e.code}</td>
+            </tr>
+    
+        </table>
+    </div>
+    `;
+});
+```

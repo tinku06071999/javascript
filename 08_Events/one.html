@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>htnml Events</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // creating an  onlcik
+    // document.getElementById('owl').onclick = function (){
+    //     alert("owl clicked");
+    // }
+    // the above methos is good but not feasible for large scale application it might 
+    // be create some problems or basiccally it gives very less features 
+    // thats why we use events instead of the above function
+   
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     // basically through this method we get an event object
+    //     console.log(e) // we get many types of evets like mostly we get the events of browser and environment 
+    //     // alert("owl clicked")
+
+    // },false) // it alsways have the default value false no need to pass but it is best pracitice to pass it bcs there may a case where without false it won't work like in interviews
+
+    /* events that should be learn
+                         type, timestamp(imp for interviews), defaultPreveted, 
+                         target, toElment, srcElement
+        imp for interviews=> clientX,clientY,screenX, screenY 
+        altkey, ctrlkey, shiftkey, keyCode ... used to check that a particular button is clicked or not etc.
+    */
+                          
+    // another method is attachEvent() method
+   
+
+    /* event Propogation :
+                => have two context
+                                => event bubbling 
+                                                =>mostly used in indistry. like above addEventListner () we passed false that is event bubbling
+                                lets understand by an example*/
+                                // document.getElementById('images').addEventListener('click',function(e){
+                                //     console.log("clicked inside the ul")
+                                // },false)
+                                // document.getElementById('owl').addEventListener('click',function(e){
+                                //     console.log("owl clicked")
+                                //     e.stopPropagation()  // this is used to stop the propagation
+                                // },false)
+                            /* in the above example we adding an click event on all tha images then on the owl 
+                             now the intresting thing is that when we cliked on owl then what will be print first or which one propagate first 
+                             like the first console or second console. so here the concept of event bubbling comes 
+                             like we pass false (default) so here it first print or propagate owl and 
+                             so we can say that event bubbling is propagate from bottom to top 
+                            */
+                            /*    =>event capturing
+                                               => paasing true instead of false in event listner 
+                                               => top to botttm propagation
+                                            in below example first propagate image then owl when cliked on owl
+    */
+                                // document.getElementById('images').addEventListener('click',function(e){
+                                //     console.log("clicked inside the ul")
+                                // },true)
+                                // document.getElementById('owl').addEventListener('click',function(e){
+                                //     console.log("owl clicked")
+                                // },true)
+
+// the conclusio of event bubbling and event capturing is we used thses on basis of use cases like if we want acce firs top elment the use even captring or when want to first bottm elment then event bubbling
+// to stop the propagation we used stopPropagation() method
+
+// preventDefault() method is used to prevent the default uses like in this we have google link and when we click on we go to the 
+// goole so lets prevent this by using this method (not want to go that page on click on that link)
+
+// document.getElementById('google').addEventListener('click', function(e){
+//     console.log("google clicked");
+//     e.preventDefault();
+//     e.stopPropagation();
+// },false)
+
+// now lets do a small work : when we clik on image the image must be remove
+document.querySelector('#images').addEventListener('click',function(e){
+    //  console.log(e);
+    //  console.log(e.target); 
+    //  console.log(e.target.parentNode);// parnet node of each image (<li></li>)
+
+    //  // now remove it 
+     // first method
+ 
+    //  let removeIt = e.target.parentNode; // it gives the all li
+    //  removeIt.remove();
+
+     // second method is
+    // removeIt.parentNode.removeChild(removeIt);
+
+    // in above method when we click on li elment the all the images remove
+    // so lets handle this situtation like we want when we clicked on image then only image remove
+
+    console.log(e.target.tagName); // return tag IMG befor it e. target is returng the li
+   
+    if(e.target.tagName === 'IMG'){
+        console.log(e.target.id)
+        let removeIt = e.target.parentNode;
+        removeIt.remove()
+    }
+},false)
+
+// the previous / above concept is known as event spillover;
+
+  </script>
+</html>
