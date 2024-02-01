@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .card {
+        /* Add shadows to create the "card" effect */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+      }
+
+      /* On mouse-over, add a deeper shadow */
+      .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      /* Add some padding inside the card container */
+      .container {
+        padding: 2px 16px;
+      }
+    </style>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <!-- XMLHttpRequest: readyState property
+       The XMLHttpRequest.readyState property returns the state an XMLHttpRequest client is in. An XHR client exists in one of the following states:
+     Value     State                 Description 
+     0        UNSENT             Client has been created. open() not called yet. 
+     1        OPENED             open() has been called. 
+     2       HEADERS_RECEIVED    send() has been called, and headers and status are available. 
+     3       LOADING             Downloading;responseText holds partial data. 
+     4       DONE                The operation is complete. -->
+    <div class="card">
+      <img id="avatar" style="width: 500px" />
+      <div class="container">
+        <h4><b>Hitesh Choudhary</b></h4>
+        <p>Architect & Engineer</p>
+        <p class="followers"></p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const xhr = new XMLHttpRequest();
+    const requesUrl = "https://api.github.com/users/hiteshchoudhary";
+    xhr.open("GET", requesUrl); // in this method we send two tpye of parameter on is like get post and another one is requested url
+    // console.log("after opened")
+    // when we send request then all the state code or value given above in comment are change countounsaly lets check them they are updating or not
+    // console.log(xhr.readyState); // its print only one state beacuse we not printing all tha state
+    // lets print all the state for we are  using onchange function
+
+    xhr.onreadystatechange = function () {
+      // console.log(xhr.readyState);
+      // when it returns 4 means work is done and we want that when it done then do a work
+      if (xhr.readyState === 4) {
+        console.log(this.responseText); // give an string  of data of requested url
+        // now lets we want some data from the data we recieved for example we want followers from the data
+        // const data = this.responseText;
+        // console.log(typeof data);
+        // console.log(data.followers);// gives undefined because the data we recived is string and we cant use  dot(.) operator on it to handle
+        // this situation we first convert string in object by using json parse method
+
+        const data = JSON.parse(this.responseText);
+        // console.log(typeof data) // object , now we easily use . oprator
+        // console.log(data.followers);
+
+        // now lets make a card and showing image and folowers on that card
+
+        const getFollowers = data.followers;
+        const getAvtar = data.avatar_url;
+
+        console.log(getAvtar); // return url of image
+
+        const avatar = document.querySelector("img");
+        const followers = document.querySelector(".followers");
+
+        // console.log(avatar);
+        avatar.src = getAvtar;
+
+        // creating new element to append it the followers node
+
+        const followersNewElement = document.createElement("p");
+
+        followersNewElement.innerHTML = `<p class="followers">Followers : ${getFollowers}</p>`;
+        followers.appendChild(followersNewElement);
+      }
+    };
+
+    xhr.send();
+  </script>
+</html>
