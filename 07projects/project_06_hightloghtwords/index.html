@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Dcoment</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body style="background-color: #212121; color: #fff">
+      <strong>We</strong> have just started <strong>this</strong> section for
+      the users (<strong>beginner</strong> to intermediate) who
+      <strong>want</strong> to work with <strong>various</strong> JavaScript
+      <strong>problems</strong> and write scripts online to
+      <strong>test</strong> their JavaScript <strong>skill</strong>.
+    </p>
+
+    // now add a feature to highlight all the words in one hover at given text
+    <p onMouseOver = "highlight()" onMouseOut="normal()" style="color:orange">On mouse over here bold words of the following paragraph will be highlighted</p>
+
+  </body>
+  <script>
+    const strongElement = document.getElementsByTagName("strong");
+    // console.log(strongElement);
+    // for (let i = 0; i < strongElement.length; i++) {
+    //   strongElement[i].addEventListener("mouseover", highlight);
+    //   strongElement[i].addEventListener("mouseout", normal);
+    //   // width.addEventListener('click',getWidth);
+    // }
+    // function highlight(e) {
+    //   console.log(e);
+    //   this.style.color = "green";
+    // }
+    // function normal(e) {
+    //   this.style.color = "white";
+    // }
+
+    // hgihliting all the elments when hover the text that present at top
+function highlight() {
+    //   console.log(e);
+        for (let i = 0; i < strongElement.length; i++) {
+        strongElement[i].style.color = "green";
+        }
+    }
+ function normal() {
+        for (let i = 0; i < strongElement.length; i++) {
+        strongElement[i].style.color = "black";
+        }
+    }
+  </script>
+</html>

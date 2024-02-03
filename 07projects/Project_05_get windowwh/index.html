@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Dcoment</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body style="background-color: #212121; color: #fff" onload="getHeight() , getWidth()" onresize="getHeight(),getWidth()">
+    <h1>Geting the width and height of window</h1>
+    <button class="width" style="margin-bottom: 10px">get window Width</button>
+    </br>
+    <button class="height">get window Height</button>
+    <button class="reload">reload window</button>
+  </body>
+    <script>
+        let width = document.querySelector('.width');
+        let height = document.querySelector('.height');
+        // const reload = document.querySelector('.reload');
+
+        // width.addEventListener('click',getWidth);
+        // height.addEventListener('click',getHeight);
+
+        // reload.addEventListener('click',reloadWindow);
+
+            function getWidth(){
+                console.log("width clicked");
+                let widthChild = window.innerWidth;
+                width.innerHTML = `Width of window is: ${widthChild} `;
+                console.log(widthChild)
+                // const newchild = `<h1 style="color:green">width of window is: ${widthChild}</h1>`  
+                //  const child = document.createElement('childOfwidth');
+                // child.innerHTML =`<h1 style="color:green">width of window is: ${widthChild}</h1>`
+                // width.appendChild(child)
+            };
+            function getHeight(){
+                let heightChild = window.innerHeight;
+                height.innerHTML = `Height of window is: ${heightChild}`;
+            //     const child = document.createElement('childOfHeight');
+            //     console.log(heightChild);
+            //     // height.innerHTML = `<h1 styrl="color:green">height of the window is: ${heightChild}</h1>`
+            //    child.innerHTML = `<h1 styrl="color:green">height of the window is: ${heightChild}</h1>`
+            //    height.appendChild (child);
+            }
+
+            function reloadWindow(){
+                location.reload();
+            }
+    </script>
+</html>
+

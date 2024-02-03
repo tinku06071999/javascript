@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Dcoment</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <h1>Click on the button to see Imgage</h1>
+    <button
+      class="button"
+      style="
+        padding: 5px;
+        border-radius: 5px;
+        background-color: black;
+        color: green;
+      "
+    >
+      See An Image
+    </button>
+    <div class="result"></div>
+  </body>
+  <script>
+    const imageArray = [
+      {
+        img: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+        width: "240",
+        height: "160",
+      },
+      {
+        img: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+        width: "320",
+        height: "195",
+      },
+      {
+        img: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",
+        width: "500",
+        height: "343",
+      },
+    ];
+
+    const button = document.querySelector(".button");
+
+    const result = document.querySelector(".result");
+
+    // console.log(button)
+    button.addEventListener("click", showImage);
+    let prevImgElement = null;
+
+    function showImage() {
+      let randomNumber = Math.round(Math.random() * 10);
+      randomNumber = randomNumber % 3;
+
+      if (prevImgElement) {
+        result.removeChild(prevImgElement);
+      }
+
+      let newImg = document.createElement("img");
+      newImg.src = imageArray[randomNumber].img;
+      newImg.style.width = imageArray[randomNumber].width;
+      newImg.style.height = imageArray[randomNumber].height;
+      console.log(newImg);
+      result.appendChild(newImg);
+      prevImgElement = newImg;
+    }
+  </script>
+</html>
